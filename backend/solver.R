@@ -105,21 +105,21 @@ solve_lp <- function(A, costs, targets, selected = NULL, lower_bound = 0, upper_
   if (length(selected) == 0) stop("No valid selected project indices")
 
   #subset A and costs
-  A_sel <- A[, selected, drop = FALSE]
-  cost_sel <- as.numeric(costs[selected])
+  ASelected <- A[, selected, drop = FALSE]
+  costSelected <- as.numeric(costs[selected])
   
-  const_mat <- -A_sel
-  const_dir <- rep("<=", nrow(A_sel))
-  const_rhs <- -as.numeric(targets)
+  constraintMatrix <- -ASelected
+  constraintDirection <- rep("<=", nrow(ASelected))
+  constraintRHS <- -as.numeric(targets)
 
-  lower <- rep(lower_bound, length(cost_sel))
-  upper <- rep(upper_bound, length(cost_sel))
+  lower <- rep(lower_bound, length(costSelected))
+  upper <- rep(upper_bound, length(costSelected))
   
 lp_res <- lp(direction = "min",
-             objective.in = cost_sel,
-             const.mat = const_mat,
-             const.dir = const_dir,
-             const.rhs = const_rhs,
+             objective.in = costSelected,
+             const.mat = constraintMatrix,
+             const.dir = constraintDirection,
+             const.rhs = constraintRHS,
              all.int = FALSE,
              lower = lower,
              upper = upper,)
@@ -130,7 +130,7 @@ lp_res <- lp(direction = "min",
     x_opt <- pmin(pmax(raw_x, lower), upper)
 
     out$feasible <- TRUE
-    out$total_cost <- sum(x_opt * cost_sel)
+    out$total_cost <- sum(x_opt * costSelected)
     out$solution <- data.frame(
       project_index = selected,
       project_name = if ("project_name" %in% names(get("DATA", envir = .__DATA_CACHE__)$projects_df)) {
@@ -139,8 +139,8 @@ lp_res <- lp(direction = "min",
                         get("DATA", envir = .__DATA_CACHE__) $projects_df[[1]][selected]
                      },
       units = as.numeric(x_opt),
-      cost_each = cost_sel,
-      total_cost = as.numeric(x_opt * cost_sel),
+      cost_each = costSelected,
+      total_cost = as.numeric(x_opt * costSelected),
       stringsAsFactors = FALSE
     )
   } else {
@@ -149,7 +149,7 @@ lp_res <- lp(direction = "min",
   }
   
   if (return_trace) {
-    trace <- tryCatch(simplex_dual_trace(A_sel, cost_sel, targets), error = function(e) list(error = as.character(e)))
+    trace <- tryCatch(simplex_dual_trace(ASelected, costSelected, targets), error = function(e) list(error = as.character(e)))
     out$tableau_trace <- trace
   }
   # convert json fro the frontend
