@@ -2,9 +2,24 @@
 # Produces: costs, A (pollutants x projects matrix), targets vector  
 # Returns a list containing projects_df, pollutants_df, costs, A, targets
 
+library(jsonlite)
+
+.__DATA_CACHE__ <- new.env(parent = emptyenv())
+
+clean_name <- function(x){
+  x <- gsub("\\s+", "", x)# remove spaces
+  x <- gsub("\\.", "", x) # remove dots
+  x <- toupper(x) # uppercase
+}
+
 read_csv_data <- function(
   projectsPath = "projects_reduction.csv",
-  pollutantsPath = "pollutants.csv") {
+  pollutantsPath = "pollutants.csv",
+  use_cache = TRUE) {
+
+  if(use_cache && exists("DATA", envir= .__DATA_CACHE__)) {
+      return(get("DATA", envir= .__DATA_CACHE__))
+  }
 
   if (!file.exists(projectsPath)) 
     stop(paste("File not found:", projectsPath))
@@ -16,13 +31,6 @@ read_csv_data <- function(
   projects_df <- read.csv(projectsPath, stringsAsFactors = FALSE, check.names = FALSE)
   pollutants_df <- read.csv(pollutantsPath, stringsAsFactors = FALSE, check.names = FALSE)
 
-  # Function to normalize column names
-  clean_name <- function(x) {
-    x <- gsub("\\s+", "", x)      # remove spaces
-    x <- gsub("\\.", "", x)       # remove dots
-    x <- toupper(x)               # uppercase
-    x
-  }
 
   # Ensure pollutants_df uses columns: Pollutant & Target
   if (!("Pollutant" %in% names(pollutants_df))) {
@@ -32,17 +40,15 @@ read_csv_data <- function(
   if (!("Target" %in% names(pollutants_df))) {
     if (ncol(pollutants_df) < 2)
       stop("pollutants.csv must have at least two columns: Pollutant, Target")
-
     names(pollutants_df)[2] <- "Target"
   }
 
   pollutants <- as.character(pollutants_df$Pollutant)
   targets <- as.numeric(pollutants_df$Target)
-
   if (any(is.na(targets)))
     stop("Some pollutant targets are not numeric in pollutants.csv")
 
-  # ---- Detect Cost Column ----
+  # Detect Cost Column
   possible_costs <- c("cost","projectcost","price","costperunit","cost_each")
   lower_names <- tolower(names(projects_df))
   matches <- which(lower_names %in% possible_costs)
@@ -65,7 +71,7 @@ read_csv_data <- function(
   if (any(is.na(costs)))
     stop("Some costs are not numeric in projects_reduction.csv")
 
-  # ---- Identify pollutant columns in projects_df ----
+  # Identify pollutant columns in projects_df
   proj_cols <- names(projects_df)
   norm_proj <- sapply(proj_cols, clean_name)
   norm_pollutants <- sapply(pollutants, clean_name)
@@ -93,18 +99,19 @@ read_csv_data <- function(
     )
   }
 
-  # ---- Build A Matrix ----
+  # Build A Matrix
   A <- as.matrix(projects_df[, pollutant_cols_idx, drop = FALSE])
   A <- t(A)   # convert to pollutants x projects
-
   colnames(A) <- paste0("P", seq_len(ncol(A)))
   rownames(A) <- pollutants
 
-  return(list(
-    projects_df = projects_df,
-    pollutants_df = pollutants_df,
-    costs = costs,
-    A = A,
-    targets = setNames(targets, pollutants)
-  ))
+DATA <- list(
+  projects_df = projects_df,
+  pollutants_df = pollutants_df,
+  costs = costs,
+  A=A,
+  targets = setNames(targets, pollutants)
+)
+  assign("DATA", DATA, envir= .__DATA_CACHE__)
+  return(DATA)
 }
