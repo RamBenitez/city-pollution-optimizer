@@ -1,0 +1,22 @@
+/* src/components/ResultsTable.css */
+
+.results-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .results-table th,
+  .results-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  .results-table th {
+    background: #e8e8e8;
+  }
+  
+  .total-cost {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
