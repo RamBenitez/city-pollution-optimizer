@@ -1,0 +1,25 @@
+/* src/components/TableauViewer.css */
+
+.tableau-table {
+    margin-bottom: 16px;
+  }
+  
+  .tableau-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tableau-table th,
+  .tableau-table td {
+    border: 1px solid #bbb;
+    padding: 6px;
+  }
+  
+  .tableau-table th {
+    background: #f0f0f0;
+  }
+  
+  .rowname {
+    font-weight: bold;
+  }
+  
