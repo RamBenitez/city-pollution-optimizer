@@ -1,67 +1,179 @@
 /* src/pages/SolverPage.css */
 
+/* Container & background */
 .solver-container {
-    padding: 20px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+  padding: 20px;
+  height: 150vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #dcedc8, #a5d6a7); 
+  color: #1b3e2b; 
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
   
   .solver-title {
     text-align: center;
     margin-bottom: 10px;
   }
+
+/* Panels & grids */
+.solver-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 2fr;
+  gap: 20px;
+  height: 100%;
+}
+/* LEFT PANEL */
+.left-panel {
+  border: 1px solid #ccc;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  max-height: 120vh;
+  background: #ffffff;
+  border-radius: 6px;
+  max-height: none;
+}
+
+
+/* MIDDLE PANEL  */
+.middle-panel {
+  display: grid;
+  grid-template-rows: auto auto; 
+  gap: 0;
+}
+
+.middle-panel {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 0px; 
+}
+
   
-  .solver-grid {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 20px;
-    height: 100%;
-  }
-  
-  /* LEFT PANEL */
-  .left-panel {
-    border: 1px solid #ccc;
-    padding: 15px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .button-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
+  .button-row button {
+    flex: 1;
+    padding: 8px 12px;
+    margin-right: 5px;
+    background-color: #2e7d32; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.button-row button:last-child {
+    margin-right: 5;
+    margin-bottom: 10;
+}
+
+
+/* Buttons */
+.button-row button, .solve-btn {
+  background-color: #66bb6a;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.pollutant-targets-container,
+.selected-projects-container {
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #f1f8e9;
+  border: 1px solid #aed581;
+  font-family: 'Arial', sans-serif;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.button-row button:hover, .solve-btn:hover {
+  background-color: #388e3c;
+}
+
+/* Input boxes */
+.bounds-row input[type="number"] {
+  width: 50px;
+  padding: 2px 4px;
+  font-size: 12px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.bounds-row {
+  display: flex;
+  gap: 30px;         
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.bounds-row label {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  font-size: 15px;    
+  gap: 4px;          
+}
+
+.bounds-row input[type="number"] {
+  width: 50px;        
+  padding: 2px 4px;   
+  font-size: 12px;    
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+
   
   .solve-btn {
-    margin-top: auto;
     padding: 10px;
     background: #2e7d32;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px; 
+    transition: all 0.2s ease;
   }
   
   .solve-btn:hover {
     background: #1b5e20;
   }
   
-  /* RIGHT PANEL */
-  .right-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    height: 100%;
-  }
+
+.output-file-section {
+  margin-top: 10px;
+  padding: 6px;
+  border: 1px solid #2e7d32;
+  border-radius: 6px;
+  background-color: #f9fbe7;
+  font-size: 13px;
+}
+/* RIGHT PANEL */
+.right-panel {
+  border: 1px solid #ccc;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #ffffff;
+  border-radius: 6px;
+}
+
+
   
-  /* TOP RIGHT */
-  .tableau-section {
-    flex: 1;
-    overflow: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
+.tableau-section,
+.results-section {
+  flex: unset;   
+  overflow: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
   
   /* BOTTOM RIGHT */
   .results-section {
@@ -79,4 +191,84 @@
     border: 1px solid #a00;
     margin-bottom: 10px;
   }
+
+  .solver-header-title {
+    font-size: 1.2rem;       
+    font-weight: 600;
+    color: #2e7d32;
+    font-family: 'Poppins', 'Roboto', sans-serif; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+    white-space: nowrap;
+  }
+
+/* Header logo + title */
+.solver-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
   
+  .solver-container {
+    padding: 20px;
+    height: 150vh;
+    display: flex;
+    flex-direction: column;
+    background: #e8f5e9; 
+    color: #222;          
+}
+
+.solver-logo {
+  height: 60px;
+  width: auto;
+}
+
+.left-panel, .right-panel {
+  background: #ffffff; 
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.selected-projects-container table,
+.results-section table {
+    font-size: 12px; 
+}
+
+.selected-projects-container th,
+.selected-projects-container td,
+.results-section th,
+.results-section td {
+    padding: 4px 6px;
+}
+
+
+.results-section,
+.tableau-section {
+  flex: 1;                /* equal vertical space */
+  min-height: 0;          /* IMPORTANT: allows scrolling instead of overflow */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.results-section h2,
+.tableau-section h2 {
+  margin-bottom: 8px;
+}
+
+.results-section .results-table,
+.tableau-section .tableau-scroll {
+  flex: 1;
+  overflow: auto;         /* makes content scroll inside fixed height */
+  min-height: 0;
+}
+
+.tableau-scroll {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid #ddd;
+  padding: 8px;
+  background: #fafafa;
+}
+

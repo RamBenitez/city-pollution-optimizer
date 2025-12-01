@@ -1,33 +1,170 @@
-/* LandingPage.css */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
 
 .landing-container {
-    height: 100vh;
-    background: #e8f5e9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(145deg, #a8e6a3, #e8f5e9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+
+.landing-header {
+  width: 95%;
+  max-width: 1400px;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  z-index: 100;
+}
+
+
+.city-title {
+  font-size: 1.5rem;          
+  color: #2e7d32;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+.landing-nav span {
+  margin-left: 20px;
+  font-size: 0.9rem;          
+  font-weight: bold;           
+  color: #1b5e20;
+  cursor: default;
+  white-space: nowrap;        
+}
+
+.landing-nav span::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0%;
+  background: #43a047;
+  transition: 0.3s;
+  margin-top: 2px;
+}
+
+.landing-nav span:hover::after {
+  width: 100%;
+}
+
+
+.landing-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 100px; 
+}
+
+
+.landing-title {
+  font-size: 2.5rem;          
+  margin-bottom: 35px;
+  color: #1b5e20;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  animation: fadeInUp 1s ease forwards;
+}
+
+
+.landing-button {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(145deg, #43a047, #66bb6a);
+  color: white;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.landing-button:hover {
+  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.header-title {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.3rem;        
+  font-weight: 600;
+  color: #1b5e20;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  white-space: nowrap;
+}
+
+.city-logo {
+  height: 80px;   
+  width: auto;
+}
+
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+}
+
+
+.plan-logo {
+  height: 150px;       
+  width: auto;
+  margin-bottom: 30px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media screen and (max-width: 768px) {
   .landing-title {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: #2e7d32;
+    font-size: 2rem;
   }
-  
-  .landing-button {
-    padding: 14px 24px;
-    font-size: 1.1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
-    background: #43a047;
-    color: white;
-    transition: 0.25s;
+
+/* Navigation tabs */
+.landing-nav span {
+  margin-left: 20px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #1b5e20;
+  cursor: default;
+  white-space: nowrap;
+}
+
+  .landing-header {
+    padding: 8px 15px;
   }
-  
-  .landing-button:hover {
-    background: #388e3c;
-  }
-  
+
+}
