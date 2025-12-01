@@ -1,0 +1,25 @@
+.selected-projects-container {
+    margin-top: 10px;
+    padding: 6px;
+    border: 1px solid #2e7d32;
+    border-radius: 6px;
+    background-color: #f1f8e9; /* light green */
+    font-family: Arial, sans-serif;
+  }
+  
+  .selected-projects-container h3 {
+    margin: 0 0 6px 0;
+    font-size: 15px;
+    color: #33691e;
+  }
+  
+  .selected-projects-container ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+  }
+  
+  .selected-projects-container li {
+    line-height: 1.2;
+  }
+  

@@ -1,22 +1,82 @@
-/* src/components/ResultsTable.css */
 
 .results-table table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .results-table th,
-  .results-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-  }
-  
-  .results-table th {
-    background: #e8e8e8;
-  }
-  
-  .total-cost {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Table headers */
+.results-table th {
+  background: #2e7d32;  
+  color: #ffffff;        
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #1b5e20;
+}
+
+/* Table cells */
+.results-table td {
+  border: 1px solid #aed581; 
+  padding: 8px;
+  background-color: #f1f8e9; 
+}
+
+/* Row shading for readability */
+.results-table tbody tr:nth-child(even) td {
+  background-color: #e6f2d9; 
+}
+
+/* Hover effect */
+.results-table tbody tr:hover td {
+  background-color: #c8e6c9; 
+  transition: background-color 0.2s ease;
+}
+
+/* Total cost section */
+.total-cost {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #2e7d32;  
+  background-color: #e8f5e9; 
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #aed581;
+}
+
+
+.results-table th, .results-table td {
+  font-size: 13px;
+}
+
+
+.tableau-table {
+  margin-bottom: 16px;
+  overflow-x: auto;       
+  overflow-y: auto;       
+  max-width: 100%;        
+  max-height: 400px;      
+  border: 1px solid #ddd; 
+}
+
+.tableau-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; 
+}
+
+.tableau-table th,
+.tableau-table td {
+  border: 1px solid #bbb;
+  padding: 6px;
+  white-space: nowrap; 
+}
+
+.tableau-table th {
+  background: #f0f0f0;
+}
+
+.rowname {
+  font-weight: bold;
+}
+

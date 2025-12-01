@@ -1,15 +1,47 @@
-/* src/components/ProjectSelector.css */
-
 .project-selector {
-    height: 420px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    padding: 8px;
-    border-radius: 4px;
-    background: #fafafa;
-  }
-  
-  .project-item {
-    margin-bottom: 6px;
-  }
-  
+  max-height: 60vh;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 4px;
+  background: #f0fff0;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.project-table td,
+.project-table th {
+  padding: 6px 8px;
+  vertical-align: middle;
+  border: none; 
+}
+
+.project-header th {
+  font-weight: bold;
+  text-align: left;
+  color: #2e7d32; 
+  font-size: 14px;
+}
+
+.project-name {
+  text-align: left;
+}
+
+.project-cost {
+  text-align: right;
+}
+
+.project-table input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+
+.project-row:hover {
+  background-color: #e0f2f1; 
+}

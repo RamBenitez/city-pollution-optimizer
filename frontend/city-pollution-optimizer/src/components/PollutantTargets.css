@@ -1,0 +1,36 @@
+.pollutant-targets-container {
+  margin-bottom: 10px;
+  padding: 6px; 
+  background-color: #e0f2f1; 
+  border: 1px solid #2e7d32;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+}
+
+.pollutant-targets-container h3 {
+  margin: 0 0 6px 0;
+  color: #1b5e20;
+  font-size: 15px;
+}
+
+.pollutant-targets-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px; 
+}
+
+.pollutant-targets-container th,
+.pollutant-targets-container td {
+  border: 1px solid #2e7d32;
+  padding: 4px 6px; 
+  text-align: left;
+}
+
+.pollutant-targets-container th {
+  background-color: #a5d6a7; 
+  color: #1b5e20;
+}
+
+.pollutant-targets-container tr {
+  line-height: 1.2; 
+}

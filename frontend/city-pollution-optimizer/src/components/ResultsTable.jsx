@@ -8,10 +8,9 @@ export default function ResultsTable({ data = [], total = null }) {
       <table>
         <thead>
           <tr>
-            <th>Project</th>
-            <th>Units</th>
-            <th>Cost/Unit</th>
-            <th>Total Cost</th>
+            <th>Mitigation Project</th>
+            <th>Number of Project Units</th>
+            <th>Cost</th>
           </tr>
         </thead>
 
@@ -20,7 +19,6 @@ export default function ResultsTable({ data = [], total = null }) {
             <tr key={i}>
               <td>{r.project_name || r.ProjectName || r.project}</td>
               <td>{Number(r.units).toFixed(4)}</td>
-              <td>{r.cost_each}</td>
               <td>{Number(r.total_cost).toFixed(2)}</td>
             </tr>
           ))}
